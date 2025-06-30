@@ -143,7 +143,7 @@ app.use('/api/admin', admin_all_groupRouter); // Admin's all groups route
 app.use('/api/admin',only_batch_codeRouter);
 
 
-mongoose.connect(process.env.db_url).then(() => {
+mongoose.connect(process.env.db_url || 8000 ).then(() => {
     console.log("Connected to MongoDB");
 
 
