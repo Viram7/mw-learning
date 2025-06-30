@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginResposeService } from '../../services/login-respose.service';
 
@@ -30,7 +30,15 @@ export class MyPurchaseComponent implements OnInit {
   http = inject(HttpClient);
   login_ser = inject(LoginResposeService);
 
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object){}
     ngOnInit(): void {
+
+       if (isPlatformServer(this.platformId)) {
+    // Skip POST during SSR
+    return;
+  }
+
          this.my_purchase.shift();
       for(let i=0;i<this.login_ser.student_info.batch_code.length;i++){
         this.http.post<any>(this.batch_api,{batchCode:this.login_ser.student_info.batch_code[i]}).subscribe(res =>{

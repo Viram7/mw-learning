@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavbarComponent } from '../../public_web/navbar/navbar.component';
-import { CommonModule, LowerCasePipe } from '@angular/common';
+import { CommonModule, isPlatformServer, LowerCasePipe } from '@angular/common';
 import { Router } from 'express';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -20,7 +20,8 @@ export class OrderSummeryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private login_ser: LoginResposeService
+    private login_ser: LoginResposeService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
   coupon = '';
   couponFound = false;
@@ -56,6 +57,11 @@ export class OrderSummeryComponent implements OnInit {
   };
 
   ngOnInit(): void {
+     if (isPlatformServer(this.platformId)) {
+    // Skip POST during SSR
+    return;
+  }
+
     this.http.get<any>(this.all_coupon_api).subscribe((res) => {
       this.coupons = res.map((c: any) => c.coupon_code);
     });

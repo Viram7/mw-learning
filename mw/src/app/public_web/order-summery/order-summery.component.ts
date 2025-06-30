@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavbarComponent } from "../../public_web/navbar/navbar.component";
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { Router } from 'express';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -18,7 +18,7 @@ export class OrderSummeryComponent implements OnInit{
 //  batchCode = "";
 
  send_batch_api_url='https://mw-learning.up.railway.app/api/student/batchDetails';
-  constructor(private route : ActivatedRoute,private http :HttpClient, private login_ser : LoginResposeService){
+  constructor( @Inject(PLATFORM_ID) private platformId: Object,private route : ActivatedRoute,private http :HttpClient, private login_ser : LoginResposeService){
 
   }
   coupon = "";
@@ -60,6 +60,11 @@ export class OrderSummeryComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+     if (isPlatformServer(this.platformId)) {
+    // Skip POST during SSR
+    return;
+  }
 
     this.paymentdetails.transactionId =  this.generateRandomText();
 

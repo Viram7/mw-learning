@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
@@ -63,9 +63,14 @@ export class BatchDetailsSubComponent implements OnInit{
   ];
 
   groupedTeachers: any[] = [];
-  constructor(private current_router :ActivatedRoute,private http : HttpClient)  { }
+  constructor(private current_router :ActivatedRoute,private http : HttpClient,@Inject(PLATFORM_ID) private platformId: Object)  { }
 
   ngOnInit(): void {
+
+     if (isPlatformServer(this.platformId)) {
+    // Skip POST during SSR
+    return;
+  }
 
     this.current_router.queryParams.subscribe((params)=>{
       console.log(params['batchCode']);
