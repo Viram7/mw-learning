@@ -17,9 +17,9 @@ export class OrderSummeryComponent implements OnInit{
 
 //  batchCode = "";
 
- send_batch_api_url='http://localhost:8000/api/student/batchDetails';
+ send_batch_api_url='https://mw-learning.up.railway.app/api/student/batchDetails';
   constructor(private route : ActivatedRoute,private http :HttpClient, private login_ser : LoginResposeService){
-      
+
   }
   coupon = "";
   couponFound = false;
@@ -31,9 +31,9 @@ export class OrderSummeryComponent implements OnInit{
   coupons = ["ABC100","CBA50"];
   user_num="";
   batchcode="";
-  buy_batch_api_url = 'http://localhost:8000/api/student/buy_batch';
+  buy_batch_api_url = 'https://mw-learning.up.railway.app/api/student/buy_batch';
 
-  item = 
+  item =
     {
       title: 'IIM Kashipur Scholarship Test',
       price: 999,
@@ -54,9 +54,9 @@ export class OrderSummeryComponent implements OnInit{
     transactionId:"",
 
   }
-  
-    
-    
+
+
+
 
 
   ngOnInit(): void {
@@ -72,7 +72,7 @@ export class OrderSummeryComponent implements OnInit{
       this.http.post<any>(this.send_batch_api_url,{ batchCode}).subscribe((res)=>{
         console.log(res);
         const batch = res.data.batch[0];
-        
+
         this.item =  {
           title : batch.batchName,
           price : batch.rate,
@@ -85,9 +85,9 @@ export class OrderSummeryComponent implements OnInit{
          this.totalAmount_fun();
       })
     })
-   
-  } 
-  
+
+  }
+
   showInputfeald(){
     this.showInput  = !this.showInput;
   }

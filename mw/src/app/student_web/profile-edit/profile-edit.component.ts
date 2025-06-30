@@ -21,7 +21,7 @@ export class ProfileEditComponent implements OnInit {
   Dialog = inject(MatDialog);
   login_ser = inject(LoginResposeService);
   http = inject(HttpClient)
-  updaTe_api_url = 'http://localhost:8000/api/student/update';
+  updaTe_api_url = 'https://mw-learning.up.railway.app/api/student/update';
   temp_exam_value = ""
 temp_exam_arr = [""];
 hide_exam_chosse = false;

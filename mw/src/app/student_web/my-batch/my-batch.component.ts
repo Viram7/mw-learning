@@ -12,12 +12,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class MyBatchComponent implements OnInit {
 
-  all_batch_api_url = 'http://localhost:8000/api/student/allbatch'
+  all_batch_api_url = 'https://mw-learning.up.railway.app/api/student/allbatch'
 
   selectedType = 'Paid'; // 'Paid' or 'Free'
   selectedTab = 'All'; // 'All' or 'Expired'
   current_student_batches : any;
-  
+
   all_batches =[{
     _id: "681274538507243b6cdfade2",
     batchName: "Full Stack Web Development",
@@ -39,13 +39,13 @@ export class MyBatchComponent implements OnInit {
     language:"",
     isNew:true,
 
-    
+
   }]
-  
+
 
 
   batches = [
-   
+
     {
       title: 'BARC 2024 Question Practice',
       type: 'Paid',
@@ -70,7 +70,7 @@ export class MyBatchComponent implements OnInit {
     this.current_student_batches = this.login_ser.student_info.batch_code;
 
     this.http.get<any []>(this.all_batch_api_url).subscribe((res)=>{
-     
+
 
        this.all_batches = res.map(batch => {
         const today = new Date();
@@ -91,25 +91,25 @@ export class MyBatchComponent implements OnInit {
 
 
       console.log(this.all_batches);
-      
+
     })
 
-    
+
     }
 
   filteredBatches() {
 
 
-  
-    
+
+
     return this.all_batches.filter(batch =>
       batch.type === this.selectedType &&
-      (this.selectedTab === 'All' || (this.selectedTab === 'Expired' && batch.status === 'Expired' )) && 
+      (this.selectedTab === 'All' || (this.selectedTab === 'Expired' && batch.status === 'Expired' )) &&
       this.current_student_batches.includes(batch.batchCode)
     );
   }
 
-  
+
 
   openBatch(batchCode :string){
 

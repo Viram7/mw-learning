@@ -11,8 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './input-batch.component.scss'
 })
 export class InputBatchComponent implements OnInit {
-  teacher_api_url = 'http://localhost:8000/api/admin/allTeacher';
-  set_batch_api_url = 'http://localhost:8000/api/admin/batchSet';
+  teacher_api_url = 'https://mw-learning.up.railway.app/api/admin/allTeacher';
+  set_batch_api_url = 'https://mw-learning.up.railway.app/api/admin/batchSet';
 
   stuForOptions = ['JEE', 'NEET', 'CUET', 'Olympiad', 'Board Exam'];
   teacherOptions: string[] = []; // this will be filled dynamically

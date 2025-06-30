@@ -20,12 +20,13 @@ export class ChatGroupComponent implements OnInit {
   public socket!: Socket;
   chatOnline = false;
   term:any;
+  process = true;
   Dialog=inject(MatDialog);
   constructor(@Inject(PLATFORM_ID) private platformId: Object, public login_ser: LoginResposeService, public http: HttpClient) {
     this.chatOnline = true;
     if (login_ser.student_info._id != '' && this.chatOnline == true) {
       if (isPlatformBrowser(this.platformId)) {
-        this.socket = io('http://localhost:8000', {
+        this.socket = io('https://mw-learning.up.railway.app/', {
           transports: ['websocket'],
           reconnectionAttempts: 5
         });
@@ -59,7 +60,7 @@ current_batchCode='';
 chatInputBox=false;
 ChatBoxContainer =true;
 selectedgroup = 0;
-  student_profile_api_url = 'http://localhost:8000/api/student/student_profile';
+  student_profile_api_url = 'https://mw-learning.up.railway.app/api/student/student_profile';
 
 
   newMessage = '';
@@ -132,7 +133,7 @@ selectedgroup = 0;
         })
 
 
-    this.http.post<any>("http://localhost:8000/api/student/all_groups", { batchCode: this.login_ser.student_info.batch_code }).subscribe(res => {
+    this.http.post<any>("https://mw-learning.up.railway.app/api/student/all_groups", { batchCode: this.login_ser.student_info.batch_code }).subscribe(res => {
 
 
 
@@ -140,6 +141,7 @@ selectedgroup = 0;
 
 
       console.log(this.contacts,'hy');
+      this.process = false;
 
 
 

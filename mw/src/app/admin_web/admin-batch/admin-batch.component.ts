@@ -78,7 +78,7 @@ export class AdminBatchComponent {
 
   ngOnInit(): void {
 
-    this.http.get('http://localhost:8000/api/admin/allTeacher').subscribe((data: any) => {
+    this.http.get('https://mw-learning.up.railway.app/api/admin/allTeacher').subscribe((data: any) => {
             console.log(data);
             this.allTeacher = data;
             console.log('Teachers fetched successfully:', this.allTeacher);
@@ -86,7 +86,7 @@ export class AdminBatchComponent {
             console.error('Error fetching teachers:', error);
         });
 
-    this.http.get('http://localhost:8000/api/admin/all_batch').subscribe((data: any) => {
+    this.http.get('https://mw-learning.up.railway.app/api/admin/all_batch').subscribe((data: any) => {
 
         this.data = data.data;
             this.data.batches.forEach(batch => {
@@ -113,7 +113,7 @@ export class AdminBatchComponent {
   deleteBatch(_id:string){
     console.log('Deleting batch with ID:', _id);
     this.data.batches.pop();
-    this.http.delete(`http://localhost:8000/api/admin/delete_batch`,{body:{_id:_id}}).subscribe((response) => {
+    this.http.delete(`https://mw-learning.up.railway.app/api/admin/delete_batch`,{body:{_id:_id}}).subscribe((response) => {
       console.log('Batch deleted successfully:', response);
       this.data
       // Optionally, refresh the batch list or remove the deleted batch from the UI

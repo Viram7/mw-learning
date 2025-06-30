@@ -15,8 +15,8 @@ import { LoginResposeService } from '../../services/login-respose.service';
 })
 export class OrderSummeryComponent implements OnInit {
   //  batchCode = "";
-  all_coupon_api = 'http://localhost:8000/api/student/all_coupons';
-  send_batch_api_url = 'http://localhost:8000/api/student/batchDetails';
+  all_coupon_api = 'https://mw-learning.up.railway.app/api/student/all_coupons';
+  send_batch_api_url = 'https://mw-learning.up.railway.app/api/student/batchDetails';
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -32,7 +32,7 @@ export class OrderSummeryComponent implements OnInit {
   coupons = ['', ''];
   user_num = '';
   batchcode = '';
-  buy_batch_api_url = 'http://localhost:8000/api/student/buy_batch';
+  buy_batch_api_url = 'https://mw-learning.up.railway.app/api/student/buy_batch';
 
   item = {
     title: 'IIM Kashipur Scholarship Test',

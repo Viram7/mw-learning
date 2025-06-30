@@ -18,7 +18,7 @@ export class RegisterPageComponent  {
     otp :number = 0;
     // entered_otp :string = "";
 
-    api_url = 'http://localhost:8000/api/student/register';
+    api_url = 'https://mw-learning.up.railway.app/api/student/register';
 
     constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
       this.registerForm = this.fb.group({

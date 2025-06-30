@@ -16,7 +16,7 @@ export class StuStudyComponent {
 
 
 
-  api_url='http://localhost:8000/api/student/allbatch';
+  api_url='https://mw-learning.up.railway.app/api/student/allbatch';
 
 
 

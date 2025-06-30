@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 })
 export class AddTeacherComponent {
   teacherForm: FormGroup;
-  api_url = 'http://localhost:8000/api/admin/add_teacher';
+  api_url = 'https://mw-learning.up.railway.app/api/admin/add_teacher';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.teacherForm = this.fb.group({

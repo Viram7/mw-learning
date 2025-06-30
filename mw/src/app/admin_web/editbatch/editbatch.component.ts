@@ -37,7 +37,7 @@ batch = {
 
 stuForOptions =  ['JEE', 'NEET', 'CUET', 'Olympiad', 'Board Exam'];
 teacherOptions = ['John Doe', 'Jane Smith', 'Dr. Patel']; // You can fetch this list dynamically if needed
-teacher_api_url ='http://localhost:8000/api/admin/allTeacher';
+teacher_api_url ='https://mw-learning.up.railway.app/api/admin/allTeacher';
 
 
 ngOnInit():void{

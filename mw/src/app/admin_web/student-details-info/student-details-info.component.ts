@@ -39,7 +39,7 @@ ngOnInit(): void {
     console.log('ID:', this.userId);
   });
 
-  this.http.post('http://localhost:8000/api/student/student_profile',{_id:this.userId}).subscribe((data: any) => {
+  this.http.post('https://mw-learning.up.railway.app/api/student/student_profile',{_id:this.userId}).subscribe((data: any) => {
     console.log(data);
     this.student = data.user;
     console.log('Students fetched successfully:', this.student);

@@ -34,7 +34,7 @@ export type PieChartOptions = {
 export class AdminDashboardComponent {
   // Bar/Line chart
 
-dashBoardApi='http://localhost:8000/api/admin/dashboard';
+dashBoardApi='https://mw-learning.up.railway.app/api/admin/dashboard';
   http = inject(HttpClient);
  total_users = 0;
   total_sales = 0;

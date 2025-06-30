@@ -40,7 +40,7 @@ export class AdminChatGroupComponent implements OnInit {
       isPlatformBrowser(this.platformId)
     ) {
       this.chatOnline = true;
-      this.socket = io('http://localhost:8000', {
+      this.socket = io('https://mw-learning.up.railway.app/', {
         transports: ['websocket'],
         reconnectionAttempts: 5,
       });
@@ -63,7 +63,7 @@ export class AdminChatGroupComponent implements OnInit {
   chatInputBox = false;
   ChatBoxContainer = true;
   selectedgroup = 0;
-  student_profile_api_url = 'http://localhost:8000/api/student/student_profile';
+  student_profile_api_url = 'https://mw-learning.up.railway.app/api/student/student_profile';
 
   newMessage = '';
   messages: any[] = [];
@@ -98,7 +98,7 @@ export class AdminChatGroupComponent implements OnInit {
     });
 
     this.http
-      .get<any>('http://localhost:8000/api/admin/all_groups')
+      .get<any>('https://mw-learning.up.railway.app/api/admin/all_groups')
       .subscribe((res) => {
         this.contacts = res.data;
 

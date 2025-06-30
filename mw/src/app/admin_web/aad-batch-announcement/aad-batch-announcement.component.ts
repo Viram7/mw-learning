@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class AadBatchAnnouncementComponent {
 
-  aad_batch_announcement_api = "http://localhost:8000/api/admin/addAnnouncement";
+  aad_batch_announcement_api = "https://mw-learning.up.railway.app/api/admin/addAnnouncement";
 
   http = inject(HttpClient);
 
@@ -40,7 +40,7 @@ export class AadBatchAnnouncementComponent {
       );
 
       console.log('Form Submitted:', this.batchAnnouncementForm.value);
-      // API call here 
+      // API call here
     } else {
       console.log('Form is invalid');
     }

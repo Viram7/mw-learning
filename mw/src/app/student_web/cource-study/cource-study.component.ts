@@ -15,12 +15,12 @@ export class CourceStudyComponent {
   videolist = ['', ''];
 
   batchCode = "";
-  
+
 
   http = inject(HttpClient);
-  videoApi = "http://localhost:8000/api/student/video/";
-  announcements_api ="http://localhost:8000/api/student/announcement";
-  cource_description_api = "http://localhost:8000/api/student/batchDescription";
+  videoApi = "https://mw-learning.up.railway.app/api/student/video/";
+  announcements_api ="https://mw-learning.up.railway.app/api/student/announcement";
+  cource_description_api = "https://mw-learning.up.railway.app/api/student/batchDescription";
 
   cource_description = {
     title: "",
@@ -41,7 +41,7 @@ export class CourceStudyComponent {
     this.currentRout.queryParams.subscribe((param) => {
       this.batchCode = param['batchCode'];
     });
-    this.http.post<any>(`http://localhost:8000/api/student/${this.batchCode}/videoList`, {}).subscribe((res) => {
+    this.http.post<any>(`https://mw-learning.up.railway.app/api/student/${this.batchCode}/videoList`, {}).subscribe((res) => {
       this.videolist = res.fileNames;
       console.log(this.videolist);
     });
@@ -62,7 +62,7 @@ export class CourceStudyComponent {
   changeVideo(fileName: String) {
 
     console.log("clicked")
-    this.videoApi = `http://localhost:8000/api/student/video/${this.batchCode}/${fileName}`;
+    this.videoApi = `https://mw-learning.up.railway.app/api/student/video/${this.batchCode}/${fileName}`;
 
   }
 

@@ -15,7 +15,7 @@ coupon_code= "";
 
 onSubmit() {
   console.log({coupon:this.coupon_code.toLowerCase()});
-this.http.post("http://localhost:8000/api/admin/add_coupons",{coupon:this.coupon_code.toLowerCase()}).subscribe(
+this.http.post("https://mw-learning.up.railway.app/api/admin/add_coupons",{coupon:this.coupon_code.toLowerCase()}).subscribe(
 
   {next:(res:any)=>{
 alert('coupon added')

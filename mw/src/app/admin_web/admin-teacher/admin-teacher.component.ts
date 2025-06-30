@@ -13,7 +13,7 @@ import { SearchFilterPipe } from "../../pipe/search-filter.pipe";
 })
 export class AdminTeacherComponent  implements OnInit {
 
-    allTeachersApi = 'http://localhost:8000/api/admin/allTeacher';
+    allTeachersApi = 'https://mw-learning.up.railway.app/api/admin/allTeacher';
     edit= true;
     http = inject(HttpClient);
     allTeacher =[
@@ -44,7 +44,7 @@ term: any;
 
     deleteTeacher(_id: string) {
         console.log('Deleting teacher with ID:', _id);
-        this.http.delete(`http://localhost:8000/api/admin/delete_teacher`, { body: { _id: _id } }).subscribe((response) => {
+        this.http.delete(`https://mw-learning.up.railway.app/api/admin/delete_teacher`, { body: { _id: _id } }).subscribe((response) => {
             console.log('Teacher deleted successfully:', response);
             // Optionally, refresh the teacher list or remove the deleted teacher from the UI
             this.allTeacher = this.allTeacher.filter(teacher => teacher._id !== _id);
@@ -57,7 +57,7 @@ editTeacherId=''
     saveData(object: any) {
       this.edit = !this.edit;
       console.log(object)
-      this.http.post('http://localhost:8000/api/admin/editTeacher',object).subscribe(
+      this.http.post('https://mw-learning.up.railway.app/api/admin/editTeacher',object).subscribe(
         {
           next: (res:any ) =>{
             alert(res.message);

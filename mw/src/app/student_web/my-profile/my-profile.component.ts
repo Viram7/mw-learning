@@ -19,7 +19,7 @@ export class MyProfileComponent implements OnInit{
 
 
   imagePreview: string | ArrayBuffer | null = null;
-  image_upload_api = 'http://localhost:8000/api/student/imageUplaod';
+  image_upload_api = 'https://mw-learning.up.railway.app/api/student/imageUplaod';
   choose_hide=true;
   Dialog = inject(MatDialog);
   login_ser = inject(LoginResposeService)

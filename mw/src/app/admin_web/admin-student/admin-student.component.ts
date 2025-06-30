@@ -36,11 +36,11 @@ batchCode = [];
   ngOnInit(): void {
 
 
-        this.http.get(' http://localhost:8000/api/admin/batchCodes ').subscribe((res :any) =>{
+        this.http.get(' https://mw-learning.up.railway.app/api/admin/batchCodes ').subscribe((res :any) =>{
           this.batchCode = res.data.batchCodes;
         })
 
-    this.http.get('http://localhost:8000/api/admin/all_student').subscribe((data: any) => {
+    this.http.get('https://mw-learning.up.railway.app/api/admin/all_student').subscribe((data: any) => {
       console.log(data);
       this.students = data.data;
       console.log('Students fetched successfully:', this.students);

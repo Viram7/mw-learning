@@ -14,7 +14,7 @@ export class MyPurchaseComponent implements OnInit {
 
 
 
-  batch_api = "http://localhost:8000/api/student/batchDetails";
+  batch_api = "https://mw-learning.up.railway.app/api/student/batchDetails";
   status = "SUCCESS";
 
 

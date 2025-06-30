@@ -41,7 +41,7 @@ export class AdminRegisterComponent {
     if (this.adminForm.invalid) return;
     console.log(this.adminForm.value);
 
-    this.http.post<any>('http://localhost:8000/api/admin/register', this.adminForm.value ).subscribe({
+    this.http.post<any>('https://mw-learning.up.railway.app/api/admin/register', this.adminForm.value ).subscribe({
       next: (res) => {
         this.responseMessage = res.message;
         alert(this.responseMessage);

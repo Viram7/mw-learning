@@ -10,7 +10,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './batch-details-sub.component.scss'
 })
 export class BatchDetailsSubComponent implements OnInit{
-  send_batch_api_url='http://localhost:8000/api/student/batchDetails';
+  send_batch_api_url='https://mw-learning.up.railway.app/api/student/batchDetails';
   batchInfo = {
     durationStart: '14 April 2025',
     durationEnd: '30 Jan 2026',

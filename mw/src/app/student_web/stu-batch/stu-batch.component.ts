@@ -13,7 +13,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrl: './stu-batch.component.scss'
 })
 export class StuBatchComponent {
-  api_url='http://localhost:8000/api/student/allbatch';
+  api_url='https://mw-learning.up.railway.app/api/student/allbatch';
 
   term: any;
 

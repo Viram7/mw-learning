@@ -25,7 +25,7 @@ export class UploadBatchVideoComponent {
     // formData.append('batchCode', this.batchCode); // Add batchCode to FormData
 
 
-    this.http.post<any>(`http://localhost:8000/api/admin/upload-video/${this.batchCode}`, formData).subscribe({
+    this.http.post<any>(`https://mw-learning.up.railway.app/api/admin/upload-video/${this.batchCode}`, formData).subscribe({
       next: (res: any) => {
       console.log('Upload success:');
       alert(`Video uploaded to batch: ${this.batchCode +" "+ res.message} `);
