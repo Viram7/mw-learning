@@ -55,6 +55,11 @@ const io = new Server(server,{
   },
 });
 
+app.get('/',(req,res)=>{
+  res.send({
+    status:true
+  })
+})
 
 
 io.on('connection',async (socket) => {
