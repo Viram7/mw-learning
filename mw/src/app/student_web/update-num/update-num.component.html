@@ -1,0 +1,32 @@
+<div>
+  <div class="p-4">
+  
+    <!-- update-number.component.html -->
+<div class="container mt-4">
+  <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="mobile" class="form-label">New Mobile Number</label>
+      <input type="text" id="mobile" class="form-control"
+             formControlName="phoneNumber" maxlength="10" />
+      <div *ngIf="otpForm.get('phoneNumber')?.invalid && otpForm.get('phoneNumber')?.touched"
+           class="text-danger">
+        Enter a valid 10-digit number.
+      </div>
+    </div>
+
+    <div class="mb-3 d-flex align-items-center">
+      <button type="button" class="btn btn-primary me-3" (click)="generateOTP()">Generate OTP</button>
+      <span *ngIf="generatedOtp">OTP sent: <strong>{{ generatedOtp }}</strong></span>
+    </div>
+
+    <div class="mb-3">
+      <label for="otp" class="form-label">Enter OTP</label>
+      <input type="text" id="otp" class="form-control" formControlName="otp" maxlength="4" />
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="otpForm.invalid">Verify & Update</button>
+  </form>
+</div>
+
+  </div>
+</div>

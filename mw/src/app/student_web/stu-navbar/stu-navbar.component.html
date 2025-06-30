@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light px-lg-5">
+  <div class="d-flex align-items-center">
+
+    <div class="dropdown">
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item my-2" [routerLink]="['my_profile']" routerLinkActive="router-link-active" > <img class="mx-1" src="https://cdn-icons-png.freepik.com/512/17740/17740774.png?ga=GA1.1.2053484477.1745645088" height="20px" > My Profile</a></li>
+        <li><a class="dropdown-item my-2" [routerLink]="['my_purchase']" routerLinkActive="router-link-active"> <img class="mx-1" src="https://cdn-icons-png.freepik.com/512/4379/4379486.png?ga=GA1.1.2053484477.1745645088" height="20px"> My purchases</a></li>
+        <li><a class="dropdown-item my-2" href="#"> <img class="mx-1" src="https://cdn-icons-png.freepik.com/512/5171/5171866.png?ga=GA1.1.2053484477.1745645088" height="20px"> Logout</a></li>
+      </ul>
+    </div>
+    <a [routerLink]="['my_profile']" routerLinkActive="router-link-active"  ><img [src]="profile_img" alt="logo" width="30" height="30" class="d-inline-block align-top rounded-5"></a>
+    <a class="navbar-brand mx-2" [routerLink]="['my_profile']" routerLinkActive="router-link-active"  > <p>{{user.name}}</p> </a>
+
+  </div>
+
+  <a class="btn btn-primary" [routerLink]="['/login_page']" routerLinkActive="router-link-active"  >logout </a>
+  <!-- <form class="form-inline d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form> -->
+</nav>

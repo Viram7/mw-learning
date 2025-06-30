@@ -1,0 +1,34 @@
+<div class="row m-0 " >
+  <div class="col-md-2">
+
+
+<mat-nav-list>
+  <h4 class="text-center">Student Home</h4>
+  <!-- <a mat-list-item  [routerLink]="[{outlets :{student:['stu_study']}}]"  routerLinkActive="router-link-active"    >Study</a>
+  <a mat-list-item  [routerLink]="[{outlets :{student:['stu_batch']}}]"   routerLinkActive="router-link-active" >Batch</a>
+  <a mat-list-item  [routerLink]="[{outlets :{student:['stu_contact']}}]"   routerLinkActive="router-link-active"    >Contact</a>
+   -->
+  <a mat-list-item  [routerLink]="['stu_study']"  routerLinkActive="router-link-active"    >Study</a>
+  <a mat-list-item  [routerLink]="['stu_batch']"   routerLinkActive="router-link-active" >Batch</a>
+  <a mat-list-item  [routerLink]="['stu_contact']"   routerLinkActive="router-link-active"    >Contact</a>
+
+</mat-nav-list>
+
+  </div>
+  <div class="col-md-10  ">
+    <app-stu-navbar></app-stu-navbar>
+
+   <div class="p-5 bg-body-tertiary">
+    <div class="px-4 py-1  " >
+      <div class="px-2 py-1 bg-white rounded-3">
+        <!-- <router-outlet name="student"  ></router-outlet> -->
+         <router-outlet></router-outlet>
+      </div>
+    </div>
+   </div>
+
+
+  </div>
+
+
+</div>

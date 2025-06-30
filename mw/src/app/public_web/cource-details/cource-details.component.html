@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<div class="px-5 mx-5" >
+
+
+  <h1>NEET 2025: City Intimation Slip Released, Exam on 4 May, Syllabus, Eligiblity</h1>
+<p>NEET 2025: The National Testing Agency (NTA) has released the NEET 2025 city intimation slip. Candidates can download the slip from the official website, neet.nta.nic.in. The NEET UG 2025 exam is scheduled to be held on May 4, 2025.</p>
+
+<div class="container my-5">
+  <h3 class="fw-bold mb-4">Class 11 NEET Courses</h3>
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let course of courseCards">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="position-relative">
+          <img [src]="course.image" class="card-img-top" [alt]="course.title">
+          <span class="badge position-absolute top-0 start-0 m-2"
+                [ngClass]="{'bg-primary': course.tag === 'ONLINE', 'bg-danger': course.tag === 'Hinglish'}">
+            {{ course.tag }}
+          </span>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <div class="mb-2">
+            <span *ngIf="course.isNew" class="badge bg-secondary me-1">New</span>
+            <span class="badge bg-warning text-dark">{{ course.language }}</span>
+          </div>
+
+          <ul *ngIf="course.startDate" class="list-unstyled small text-muted mt-2 mb-3">
+            <li><i class="bi bi-people-fill me-2"></i> For NEET Aspirants</li>
+            <li><i class="bi bi-calendar-event me-2"></i> {{ course.startDate }} - {{ course.endDate }}</li>
+          </ul>
+
+          <div class="d-flex justify-content-between align-items-center mb-2" *ngIf="course.originalPrice">
+            <span class="text-muted">₹<del>{{ course.originalPrice }}</del></span>
+            <span class="fw-bold text-success">₹{{ course.price }}</span>
+          </div>
+
+          <p *ngIf="course.discount" class="badge bg-success mb-3">Discount of {{ course.discount }} applied</p>
+
+          <div class="d-flex gap-2 mt-auto">
+            <a [routerLink]="['/batch_details']" routerLinkActive="router-link-active" class="btn btn-outline-dark w-50">
+              View Details
+              <button [ngClass]="{'btn btn-outline-primary w-50': !course.isDark, 'btn btn-dark w-50': course.isDark}">
+                Explore
+              </button>
+            </a>
+            <a>
+              <button [ngClass]="{'btn btn-primary w-50': !course.isDark, 'btn btn-outline-dark w-50': course.isDark}">
+                Buy Now
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-light border rounded-pill px-4 py-2">
+      View All Batches <i class="bi bi-chevron-down ms-2"></i>
+    </button>
+  </div>
+</div>
+
+
+</div>

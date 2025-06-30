@@ -1,0 +1,21 @@
+<h1> ADD BATCH ANNOUNCEMENT </h1>
+
+<form [formGroup]="batchAnnouncementForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="batchCode">Batch Code</label>
+    <input type="text" id="batchCode" formControlName="batchCode" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="announcement_title">Title</label>
+    <input type="text" id="announcement_title" formControlName="announcement_title" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="announcement_description">description</label>
+    <textarea id="announcement_description" formControlName="announcement_description" class="form-control" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

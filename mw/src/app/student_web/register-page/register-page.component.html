@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h3 class="text-center mb-4">Register</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">
+            <div *ngIf="submitted && registerForm.controls['name'].errors" class="text-danger">
+              Name is required.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+            <div *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
+              Enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter your phone number">
+              <button *ngIf="registerForm.controls['phoneNumber'].valid" class="btn btn-outline-secondary" type="button" (click)="generateOTP()">Generate OTP</button>
+            </div>
+            <div *ngIf="submitted && registerForm.controls['phoneNumber'].errors" class="text-danger">
+              Enter a valid 10-digit phone number.
+            </div>
+            <p *ngIf="otp != 0" > // your otp is {{otp}} </p>
+          </div>
+
+          <div *ngIf="otp != 0 " class="mb-3">
+            <label class="form-label">OTP</label>
+            <div class="input-group">
+              <input  type="text" class="form-control" formControlName="otp" placeholder="Enter OTP">
+
+            </div>
+            <div *ngIf="submitted &&  registerForm.controls['otp'].errors" class="text-danger">
+              Enter the correct 4-digit OTP.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mt-3" >Register</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

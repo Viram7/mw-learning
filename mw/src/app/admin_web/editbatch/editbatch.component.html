@@ -1,0 +1,135 @@
+<div class="container py-4 scrollable-dialog">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Batch Details</h5>
+      <button class="btn btn-light btn-sm" (click)="isEdit = !isEdit">{{ isEdit ? 'Cancel' : 'Edit' }}</button>
+    </div>
+
+    <div class="card-body" *ngIf="batch">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label>Batch Name</label>
+          <input [readonly]="!isEdit" [(ngModel)]="batch.batchName" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>Batch Code</label>
+          <input [readonly]="!isEdit" [(ngModel)]="batch.batchCode" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>Rate</label>
+          <input [readonly]="!isEdit" [(ngModel)]="batch.rate" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>Discount</label>
+          <input [readonly]="!isEdit" [(ngModel)]="batch.discount" class="form-control" />
+        </div>
+        <div class="col-md-6">
+          <label>Student Count</label>
+          <input [readonly]="true" [value]="batch.studentCount" class="form-control-plaintext" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="p-2">Start Date</label>
+          <input type="date" *ngIf="isEdit" [(ngModel)]="batch.startDate" class="form-control" /><br>
+          <div class="border w-100 rounded p-2" *ngIf="!isEdit">
+            <span class=" fs-6  ">{{batch.startDate | date:'longDate'}}</span>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <label class="p-2">End Date</label>
+          <input type="date" *ngIf="isEdit" [(ngModel)]="batch.endDate" class="form-control" /><br>
+          <div class="border w-100 rounded p-2 " *ngIf="!isEdit">
+            <span class=" fs-6  ">{{batch.endDate | date:'longDate'}}</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Batch Title</label>
+        <input [readonly]="!isEdit" [(ngModel)]="batch.batchDescription.title" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label>Batch Description</label>
+        <textarea [readonly]="!isEdit" rows="4" [(ngModel)]="batch.batchDescription.description"
+          class="form-control"></textarea>
+      </div>
+
+   <div class="row" >
+       <div class="mb-3 col-md-4 ">
+        <label class="form-label">Student For</label>
+        <select class="form-select" [(ngModel)]="batch.stu_for[0]" name="stu_for">
+          <option *ngFor="let option of stuForOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-md-4">
+        <label class="form-label">Student For</label>
+        <select class="form-select" [(ngModel)]="batch.stu_for[1]" name="stu_for">
+          <option *ngFor="let option of stuForOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-md-4">
+        <label class="form-label">Student For</label>
+        <select class="form-select" [(ngModel)]="batch.stu_for[2]" name="stu_for">
+          <option *ngFor="let option of stuForOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3 col-md-4">
+
+        <label class="form-label">Teachers</label>
+        <select class="form-select" [(ngModel)]="batch.teacher[0]" name="teacher">
+
+          <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+            {{ teacher }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-md-4">
+        <label class="form-label">Teachers</label>
+        <select class="form-select" [(ngModel)]="batch.teacher[1]" name="teacher">
+          <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+            {{ teacher }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-md-4">
+        <label class="form-label">Teachers</label>
+        <select class="form-select" [(ngModel)]="batch.teacher[2]" name="teacher">
+          <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+            {{ teacher }}
+          </option>
+        </select>
+      </div>
+   </div>
+
+
+      <div>
+        image link <br>
+
+        <input class="w-100 p-2 m-1" type="text" [(ngModel)]="batch.batch_img_link">
+      </div>
+      <div class="text-center my-3">
+
+        <img [src]="batch.batch_img_link" class="img-fluid rounded shadow-sm" style="max-height: 200px;" />
+      </div>
+
+      <div *ngIf="isEdit" class="text-end">
+        <button class="btn btn-success" (click)="saveBatch()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h1> batch video upload </h1>
+
+
+<div>
+  <input type="file" (change)="onFileSelected($event)" accept="video/*" />
+<input type="text" [(ngModel)]="batchCode" placeholder="Enter Batch Code" />
+<button (click)="uploadVideo()">Upload</button>
+</div>
+<br>
+

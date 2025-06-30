@@ -1,0 +1,138 @@
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <!-- Sidebar -->
+    <div class="col-md-4 border-end p-0 bg-light">
+      <div class="p-3 border-bottom">
+        <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search or start new chat" />
+      </div>
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let contact of contacts | searchFilter:term ; let i = index"  class="list-group-item list-group-item-action">
+          <div class="d-flex align-items-center" (click)="changeChatBox(i)">
+            <img [src]="contact.group_img_link" class="rounded-circle me-2" width="40" height="40" />
+            <div>
+              <strong>{{ contact.name }}</strong><br />
+              <small class="text-muted">{{ contact.lastMessage }}</small>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Chat Window -->
+    @if(ChatBoxContainer){
+    <div class="col-md-8 d-flex flex-column p-0" style="height: 500px">
+      <div (click)="closeChatBoxContainer()" onmouseover="this.style.backgroundColor='cyan'; "
+        onmouseout="this.style.backgroundColor='white'; this.style.color='black';" class="p-3">
+        <strong>{{ selectedContact.name || "Select a chat" }}</strong>
+      </div>
+      <!-- Messages -->
+      <div class="flex-grow-1 overflow-auto p-3" style="background-color: #f0f0f0" #chatContainer>
+        <div *ngFor="let msg of messages" class="mb-2 d-flex" [ngClass]="{
+            'justify-content-end':
+              msg.phoneno === this.login_ser.student_info.phoneNumber
+          }">
+          <div class="p-2 rounded" [ngClass]="
+              msg.phoneno === this.login_ser.student_info.phoneNumber
+                ? 'bg-success text-white'
+                : 'bg-white text-dark'
+            " style="max-width: 75%">
+            <small>
+              <p class="w-100 text-start badge bg-primary text-wrap">
+                {{ msg.user }}
+              </p>
+            </small>
+            <br />
+            {{ msg.text }}
+            <div class="text-end">
+              <small class="text-muted">{{ msg.time }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      @if(chatInputBox){
+      <div class="p-3 border-top bg-white">
+        <form (ngSubmit)="sendMessage()">
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="newMessage" name="message"
+              placeholder="Type a message..." required />
+            <button class="btn btn-success" type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+      }
+    </div>
+    } @else {
+   <div class="col-md-8 d-flex flex-column p-0" style="height: 100%; background-color: #f9f9f9;">
+  <!-- Back Button -->
+  <div class="p-3">
+    <span
+      (click)="closeChatBoxContainer()"
+      class="border border-2 rounded-circle p-2 bg-white shadow-sm"
+      style="cursor: pointer;"
+    >
+      &lt;
+    </span>
+  </div>
+
+  <div class="container">
+    <!-- Group Image -->
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <div class="rounded-circle overflow-hidden border border-3" style="width: 110px; height: 110px;">
+        <img (click)="openDp();"
+          [src]="selectedContact.group_img_link"
+          alt="Group Image"
+          class="img-fluid"
+          style="height: 100%; width: 100%; object-fit: cover;"
+        />
+      </div>
+    </div>
+
+    <!-- Group Name -->
+    <div class="text-center mb-3">
+      <h3 class="fw-bold text-primary">{{ selectedContact.name }}</h3>
+      <p class="text-muted">Group . {{ selectedContact.members.length }} Members</p>
+    </div>
+
+    <!-- Group Description Card -->
+    <div class="card shadow-sm mb-4 border-0">
+      <div class="card-body">
+        <h6 class="card-title text-dark fw-semibold">All students talk very politely</h6>
+        <p class="card-text text-muted mb-0">
+          Group was automatically created by the system on
+        </p>
+        <p class="text-muted small mb-0">{{ selectedContact.createdAt | date: 'medium' }}</p>
+      </div>
+    </div>
+
+    <!-- Members List -->
+    <h5 class="fw-semibold text-dark mb-3">Members</h5>
+
+    <div class="row row-cols-1 g-2">
+      <div
+        class="col"
+        *ngFor="let member of selectedContact.members ; let i = index"
+      >
+        <div class="card border-0 shadow-sm bg-white">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <h6 class="mb-1 fw-semibold">
+                {{ i === 0 ? '👑 Admin' : member.name }}
+              </h6>
+              <small class="text-muted">{{ member.joinedAt | date: 'medium' }}</small>
+            </div>
+            <!-- Optional: icon or button -->
+            <i class="bi bi-person-circle fs-4 text-primary"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    }
+  </div>
+</div>
+
+

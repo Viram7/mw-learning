@@ -1,0 +1,23 @@
+# Ignore node modules
+**/node_modules/
+
+# Ignore environment files
+**/.env
+
+# Ignore build and cache files
+**/.angular/cache/
+**/dist/
+**/build/
+**/tmp/
+**/.turbo/
+**/.vite/
+
+# Ignore logs
+*.log
+
+# Ignore video uploads (THIS IS IMPORTANT)
+
+
+# Ignore OS system files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,103 @@
+<form (ngSubmit)="onSubmit()" #batchForm="ngForm" class="p-4 border rounded bg-light">
+  <div class="row">
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Batch Name</label>
+      <input type="text" class="form-control" name="batchName" [(ngModel)]="batch.batchName" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Batch Code</label>
+      <input type="text" class="form-control" name="batchCode" [(ngModel)]="batch.batchCode" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Start Date</label>
+      <input type="date" class="form-control" name="startDate" [(ngModel)]="batch.startDate" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">End Date</label>
+      <input type="date" class="form-control" name="endDate" [(ngModel)]="batch.endDate" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Batch Image Link</label>
+      <input type="text" class="form-control" name="batch_img_link" [(ngModel)]="batch.batch_img_link" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Description Title</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="batch.batchDescription.title" required />
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="batch.batchDescription.description"
+        required></textarea>
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Rate</label>
+      <input type="text" class="form-control" name="rate" [(ngModel)]="batch.rate" required />
+    </div>
+
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Discount</label>
+      <input type="text" class="form-control" name="discount" [(ngModel)]="batch.discount" />
+    </div>
+
+    <div class="mb-3 col-md-3 ">
+      <label class="form-label">Student For</label>
+      <select class="form-select" [(ngModel)]="batch.stu_for[0]" name="stu_for">
+        <option *ngFor="let option of stuForOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Student For</label>
+      <select class="form-select" [(ngModel)]="batch.stu_for[1]" name="stu_for">
+        <option *ngFor="let option of stuForOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Student For</label>
+      <select class="form-select" [(ngModel)]="batch.stu_for[2]" name="stu_for">
+        <option *ngFor="let option of stuForOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3 col-md-3">
+
+      <label class="form-label">Teachers</label>
+      <select class="form-select" [(ngModel)]="batch.teacher[0]" name="teacher">
+         
+        <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+          {{ teacher }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Teachers</label>
+      <select class="form-select" [(ngModel)]="batch.teacher[1]" name="teacher">
+        <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+          {{ teacher }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-3">
+      <label class="form-label">Teachers</label>
+      <select class="form-select" [(ngModel)]="batch.teacher[2]" name="teacher">
+        <option *ngFor="let teacher of teacherOptions" [value]="teacher">
+          {{ teacher }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

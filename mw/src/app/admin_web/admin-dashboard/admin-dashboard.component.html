@@ -1,0 +1,101 @@
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <div class="ms-auto text-white">
+    <i class="bi bi-person-circle"></i> <h4>Dashboard</h4>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+
+
+    <!-- Main Content -->
+    <div class="col-md-12 p-4">
+
+      <div class="row g-3">
+        <!-- Card 1 -->
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h6>Total Students</h6>
+              <h3> {{ total_users }} </h3>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h6>Total Batches</h6>
+              <h3> {{ total_batches }} </h3>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h6>Total Teachers</h6>
+              <h3> {{ total_teachers }} </h3>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-md-3">
+          <div class="card shadow-sm">
+            <div class="card-body text-center">
+              <h6>Total Sales 2025</h6>
+              <h3> ₹ {{ total_sales }} </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 ">
+        <div class="col-md-6">
+          <apx-chart [series]="genderChartData.series" [chart]="genderChartData.chart" [labels]="genderChartData.labels"
+            [colors]="genderChartData.colors" [legend]="genderChartData.legend"
+            [responsive]="genderChartData.responsive">
+          </apx-chart>
+        </div>
+
+
+        <div class="col-md-6">
+          <apx-chart [series]="chartOptionsBar.series" [chart]="chartOptionsBar.chart" [title]="chartOptionsBar.title"
+            [xaxis]="chartOptionsBar.xaxis"></apx-chart>
+        </div>
+      </div>
+      <!-- Upcoming Classes or Graph Placeholder -->
+      <!-- <div class="mt-5">
+        <h5>Upcoming Classes</h5>
+        <table class="table table-bordered table-striped">
+          <thead class="table-light">
+            <tr>
+              <th>Batch</th>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Batch A</td>
+              <td>Math</td>
+              <td>Mr. Sharma</td>
+              <td>10:00 AM</td>
+            </tr>
+            <tr>
+              <td>Batch B</td>
+              <td>Physics</td>
+              <td>Mrs. Verma</td>
+              <td>11:30 AM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
+
+

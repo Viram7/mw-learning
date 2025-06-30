@@ -1,0 +1,41 @@
+<div id="body">
+<!-- for add animation use here ->  class="hide_left hide_right" -->
+  <div id="con"                                      [ngStyle]="{'background-color': back_color,'color': color }">
+    @if(img_left){ @if(pannal_data){
+    <div id="image">
+      <img [src]="pannal_data.img_link" />
+    </div>
+    <div id="text" [ngStyle]="{'text-align': align}">
+      <h3 [ngStyle]="{'text-align': btalign}" >{{ pannal_data.title }}</h3>
+      <h5 [ngStyle]="{'text-align': btalign}" >{{ pannal_data.sub_title }}</h5>
+      <p>
+        {{ pannal_data.decription }}
+      </p>
+      <button id="pannal_bt" type="button" [ngStyle]="{'background-color': bt_back_color,'color': bt_color}"  >
+         {{ pannal_data.btn }}
+      </button>
+    </div>
+    } } @else {
+    <div id="text" [ngStyle]="{'text-align': align}">
+      <h3>{{ pannal_data.title }}</h3>
+      <h5>{{ pannal_data.sub_title }}</h5>
+      <p>
+        {{ pannal_data.decription }}
+      </p>
+     <a [routerLink]="bt_link" routerLinkActive="router-link-active"  >  <button id="pannal_bt" type="button" [ngStyle]="{'background-color': bt_back_color,'color': bt_color}" >
+      {{ pannal_data.btn }}
+   </button> </a>
+
+    </div>
+
+    <div id="image">
+      <img [src]="pannal_data.img_link" />
+    </div>
+
+    }
+  </div>
+</div>
+
+
+
+

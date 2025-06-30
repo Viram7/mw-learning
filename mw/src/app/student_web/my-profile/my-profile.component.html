@@ -1,0 +1,77 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Profile Image Section -->
+    <div class="col-md-3 text-center">
+      <div class="position-relative">
+
+        <img   [src]="imagePreview" alt="Profile" class="rounded-circle" width="120" height="120">
+        <input type="file"   (change)="onImageSelected($event)"  accept="image/*">
+        <!-- <button class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1">
+          <i class="bi bi-camera"></i>
+        </button> -->
+      </div>
+      <div class="mt-2">
+        <!-- <button class="btn btn-outline-secondary btn-sm">NA</button> -->
+      </div>
+    </div>
+
+
+    <div class="col-md-9">
+
+
+      <!-- Profile Details -->
+      <div class="d-flex justify-content-between align-items-center px-5">
+        <h5 class="fw-bold ">Profile Detail</h5>
+        <button class="btn btn-link mat-raised-button " (click)="openDilog()">Edit</button>
+      </div>
+
+      <div class="row mt-3">
+        <div class="">
+          <p class="text-muted small mb-1 px-5">Personal Details</p>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Name:</p>
+            <b class="mb-0"> {{userProfile.name}} </b>
+          </div>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Mobile No:</p>
+            <p class="mb-0"> {{userProfile.mobile}} </p>
+          </div>
+
+          <div class="d-flex justify-content-between px-5">
+            <p>Email:</p>
+            <p class="mb-0"> {{userProfile.email}} </p>
+          </div>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Living City/Village/Town:</p>
+            <p class="mb-0"> {{userProfile.city}} {{userProfile.state}} </p>
+          </div>
+
+          <p class="text-muted small mb-1 mt-4 px-5">Academic Details</p>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Stream:</p>
+            <p class="mb-0"> {{userProfile.stream}} </p>
+          </div>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Exams:</p>
+            <p class="mb-0"> <span *ngFor="let exam of userProfile.exams" > {{exam}} </span> </p>
+          </div>
+
+          <div class=" d-flex justify-content-between px-5">
+            <p>Living State:</p>
+            <p class="mb-0"> {{userProfile.state}} </p>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

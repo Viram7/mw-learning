@@ -1,0 +1,22 @@
+<div style="max-width: 600px; margin: auto; font-family: sans-serif;">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img [src]="student.img_link" alt="Profile"
+         style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid #ccc;">
+    <h2 style="margin-top: 10px;">{{ student.name }}</h2>
+  </div>
+
+  <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p><strong>Phone:</strong> {{ student.phoneNumber }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p><strong>Gender:</strong> {{ student.gender }}</p>
+    <p><strong>City:</strong> {{ student.city }}</p>
+    <p><strong>State:</strong> {{ student.state }}</p>
+    <p><strong>Stream:</strong> {{ student.stream }}</p>
+    <p><strong>Exams:</strong> {{ student.exam.join(', ') }}</p>
+    <p><strong>Batch Codes:</strong> {{ student.batch_code.join(', ') }}</p>
+    <p><strong>Student ID:</strong> {{ student._id }}</p>
+  </div>
+</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button class="btn btn-primary" (click)="goBack()"> Go Back </button>
+  </div>

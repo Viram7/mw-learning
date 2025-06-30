@@ -1,0 +1,100 @@
+<!-- <app-navbar></app-navbar> -->
+<div class=" row">
+  <h2>Order Summery </h2>
+  <div class="col-md-8">
+    <div class="card p-4 my-4 shadow-sm rounded-4">
+      <h5 class="fw-bold mb-4">{{ item.title }}</h5>
+
+      <div  class="d-flex align-items-center gap-3">
+        <img [src]="item.image" alt="course" class="rounded" style="width: 120px; height: auto;">
+
+        <div>
+          <div class="fw-medium">{{ item.descriptionTitle }}</div>
+          <div class="mt-2">
+            <span class="fw-bold fs-5">₹ {{  item.discountPrice  }}</span>
+            <span class="text-muted text-decoration-line-through ms-2">₹ {{ item.price }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-4">
+    <div class="container my-4">
+      <div class="card shadow rounded-4 p-3">
+
+        <!-- Coupon Section -->
+        <div class="border-bottom pb-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <i class="bi bi-ticket-perforated-fill text-primary"></i>
+              <span class="fw-bold  ">Apply Code/Coupon</span>
+              @if(couponFound){
+                <div class=" small text-primary "> coupons available</div>
+              }
+              @else{
+                <div class="text-muted small">no coupons available</div>
+              }
+
+            </div>
+            <button class="btn btn-link text-primary text-decoration-none fw-bold  " (click)="showInputfeald()" >APPLY</button>
+          </div>
+          <span class=" border border-5  border " *ngIf="showInput"  >
+            <input class="border-0 w-75" type="text"  placeholder="enter coupon " (change)="cheakCoupon()" [(ngModel)]="coupon"  > <span   > <img  id="couponSearchbt" src="https://cdn-icons-png.freepik.com/512/4398/4398568.png?ga=GA1.1.1321190767.1731058492" height="25px"> </span>
+          </span>
+          <div class="mt-2 text-primary small">
+            <i class="bi bi-chevron-right"></i> <span> </span>
+          </div>
+        </div>
+
+        <!-- Donation Section -->
+        <div class="border-bottom pb-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <i class="bi bi-heart-fill text-warning"></i>
+              <span class="fw-bold">Donate to PW foundation.</span>
+              <div class="text-primary small">Know more</div>
+            </div>
+            <input type="number" class="form-control form-control-sm" value="10" [(ngModel)]="donateMW" (change)=" totalAmount_fun();" style="width: 80px;">
+          </div>
+        </div>
+
+        <!-- Payment Summary Section -->
+        <div class="pb-3 mb-3">
+          <h5 class="fw-bold mb-3">Payment Summary</h5>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Price (1 items)</span>
+            <span> {{item.price}} </span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Discount</span>
+            <span class="text-success">- {{ discount  }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Donate to MW foundation</span>
+            <span>₹ <span>{{donateMW}}</span> </span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Coupon Disc.</span>
+            <span>₹ {{ couponDis }}</span>
+          </div>
+
+          <hr>
+          <p> <small> {{paymentdetails.transactionId}} </small> </p>
+          <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total Amount</span>
+            <span>₹ {{totalAmount}} </span>
+          </div>
+        </div>
+
+        <!-- Buy Button -->
+        <button class="btn btn-primary rounded-3 w-100 fw-bold py-2" (click)="payment()" >
+          PROCEED TO BUY
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

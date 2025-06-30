@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <div class="ms-auto text-white d-flex align-items-center gap-2">
+    <i class="bi bi-person-circle fs-4"></i>
+    <h4 class="mb-0">Teacher Management</h4>
+  </div>
+</nav>
+
+<div class="col-md-12 p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4>Teacher Management</h4>
+    <button class="btn btn-primary" [routerLink]="['../admin_add_teacher']">+ Add Teacher</button>
+  </div>
+
+  <!-- Search and Filter -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <small> Search by name, email, number or subject </small>
+      <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search by name, email, number or subject ">
+    </div>
+
+  </div>
+
+  <!-- Teacher Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th> Name </th>
+          <th>Subject</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Exp.</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of allTeacher | searchFilter:term ; let i = index">
+          <ng-container *ngIf="editTeacherId === teacher._id; else viewMode">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <div class="d-flex gap-2 align-items-center">
+                <img class="rounded-circle" [src]="teacher.img_link" height="20">
+                <input type="text" placeholder="enter img link" [(ngModel)]="teacher.img_link" >
+                <input [(ngModel)]="teacher.name" name="name{{i}}" class="form-control form-control-sm">
+              </div>
+            </td>
+            <td><input [(ngModel)]="teacher.subject" name="subject{{i}}" class="form-control form-control-sm"></td>
+            <td><input [(ngModel)]="teacher.phoneNumber" name="phone{{i}}" class="form-control form-control-sm"></td>
+            <td><input [(ngModel)]="teacher.email" name="email{{i}}" class="form-control form-control-sm"></td>
+            <td><input [(ngModel)]="teacher.experience" name="exp{{i}}" class="form-control form-control-sm"></td>
+            <td>
+              <button class="btn btn-sm btn-success mx-1" (click)="saveData(teacher)">Save</button>
+              <button class="btn btn-sm btn-secondary mx-1" (click)="editTeacherId = ''">Cancel</button>
+            </td>
+          </ng-container>
+
+          <ng-template #viewMode>
+            <td>{{ i + 1 }}</td>
+            <td>
+              <div class="d-flex gap-2 align-items-center">
+                <img class="rounded-circle" [src]="teacher.img_link" height="30">
+                <span>{{ teacher.name }}</span>
+              </div>
+            </td>
+            <td>{{ teacher.subject }}</td>
+            <td>{{ teacher.phoneNumber }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.experience }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary mx-1" (click)="editTeacherId = teacher._id">Edit</button>
+              <button class="btn btn-sm btn-danger mx-1" (click)="deleteTeacher(teacher._id)">Delete</button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

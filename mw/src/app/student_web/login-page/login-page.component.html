@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card p-4 shadow rounded-3">
+        <h4 class="text-center mb-4">Login</h4>
+
+        <!-- Step 1: Mobile -->
+        <form *ngIf="step === 'mobile'" [formGroup]="mobileForm" (ngSubmit)="submitMobile()">
+          <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" [ngModel]="9302963149" formControlName="mobile" placeholder="Enter 10-digit mobile number">
+            <div class="text-danger small mt-1" *ngIf="mobileForm.get('mobile')?.invalid && mobileForm.get('mobile')?.touched">
+              Please enter a valid mobile number.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="mobileForm.invalid">Send OTP</button>
+          <a [routerLink]="['/register_page']" routerLinkActive="router-link-active">register now</a>
+        </form>
+
+        <!-- Step 2: OTP -->
+        <form *ngIf="step === 'otp'" [formGroup]="otpForm" (ngSubmit)="submitOtp()">
+          <div class="mb-3">
+            <label class="form-label">Enter OTP</label>
+            <input type="text" class="form-control" [ngModel]="121211" formControlName="otp" placeholder="6-digit OTP">
+            <div class="text-danger small mt-1" *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched">
+              Please enter a valid 6-digit OTP.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success w-100" [disabled]="otpForm.invalid">Login</button>
+          <button type="button" class="btn btn-link w-100 mt-2" (click)="goBack()">← Change Mobile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

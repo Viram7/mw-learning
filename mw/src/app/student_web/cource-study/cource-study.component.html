@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <!-- Top Card -->
+  <div class="bg-primary text-white p-4 rounded-top">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="m-0">{{ this.batchCode }}</h2>
+      <button class="btn btn-light btn-sm">
+        <i class="bi bi-whatsapp"> </i> Share Batch
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <mat-tab-group class="">
+    <mat-tab label="All classes">
+      <video [src]="videoApi" controls  autoplay width="100%"></video>
+
+      <div
+        (click)="changeVideo(item)"
+        class="card p-3 mt-3"
+        *ngFor="let item of videolist"
+      >
+        <div class="row">
+          <div class="col-md-4">
+            <img src="..." class="img-thumbnail" alt="..." />
+          </div>
+
+          <div class="col-md-8 card-body">
+            <h5>{{ item }}</h5>
+            <p class="text-muted">Select your subjects & start learning</p>
+
+            <div class="card mt-3 p-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-megaphone-fill fs-2 me-3 text-primary"></i>
+                <!-- <div>
+                  <h6 class="mb-0">Notices</h6>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Description">
+
+   <div class=" p-3 m-3">
+       <h4> {{cource_description.title}} </h4>
+      <p> {{cource_description.description}} </p>
+   </div>
+
+    </mat-tab>
+
+    <mat-tab label="Announcements">
+
+   <div class="p-3 m-3">
+       <ng-container *ngFor="let announcement of announcements">
+        <div class="card w-100 m-2">
+          <div class="card-body">
+            <h5 class="card-title">{{ announcement.title }}</h5>
+            <p class="card-text">{{ announcement.description }}</p>
+          </div>
+        </div>
+      </ng-container>
+   </div>
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

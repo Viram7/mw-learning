@@ -1,0 +1,45 @@
+
+<div class="d-flex">
+  <input type="text" class="form-control text-dark " placeholder="Search for courses..." [(ngModel)]="term" aria-label="Search" >
+<button>search</button>
+</div>
+<div class="container mt-5">
+
+  <h3>All Batch</h3>
+  <div class="row">
+
+    <div class="col-md-4" *ngFor="let course of courses | searchFilter:term">
+      <div class="card shadow rounded-4 m-2">
+        <div class="position-relative">
+          <img [src]="course.image" class="card-img-top rounded-top-4 p-3" alt="Course Image">
+          <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">New</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.subtitle | slice:0:100  }}...</p>
+
+          <div class="row mb-1">
+            <span class="col-md-5" > Starts on <br> {{ course.startDate }} </span>
+            <span class="col-md-2 d-flex justify-content-center " >  &#8594; </span>
+            <span class="col-md-5" > Ends on <br> {{ course.endDate }}</span>
+            <!-- <li><i class="bi bi-building "></i> {{ course.info }}</li> -->
+          </div>
+
+          <!-- <a href="#" class="text-primary fw-semibold d-block mb-3">Free Counselling</a> -->
+          <div class="my-4" >
+             <span> batchCode </span> <span class="bg-body-secondary p-1 px-3 rounded" >{{course.batchCode}} </span>
+
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary w-50" [routerLink]="['../batch_details_sub']" [queryParams]="{batchCode:course.batchCode}" routerLinkActive="router-link-active" >Explore</button>
+            <button class="btn btn-primary w-50" [routerLink]="['../order_summery']" [queryParams]="{batchCode:course.batchCode}" routerLinkActive="router-link-active">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

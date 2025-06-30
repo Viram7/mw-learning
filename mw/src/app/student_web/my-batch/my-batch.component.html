@@ -1,0 +1,52 @@
+<div class="container py-4">
+  <h4>My Batches</h4>
+
+  <!-- Paid / Free Toggle -->
+  <div class="btn-group my-3" role="group">
+    <button type="button" class="btn"
+            [ngClass]="{ 'btn-primary': selectedType === 'Paid', 'btn-light': selectedType !== 'Paid' }"
+            (click)="selectedType = 'Paid'">Paid</button>
+
+    <button type="button" class="btn"
+            [ngClass]="{ 'btn-primary': selectedType === 'Free', 'btn-light': selectedType !== 'Free' }"
+            (click)="selectedType = 'Free'">Free</button>
+  </div>
+
+  <!-- All / Expired Tabs -->
+  <ul class="nav nav-tabs my-3">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="selectedTab === 'All'" (click)="selectedTab = 'All'">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="selectedTab === 'Expired'" (click)="selectedTab = 'Expired'">Expired</a>
+    </li>
+  </ul>
+
+  <!-- Batch Cards -->
+  <div class="row g-3 mt-2">
+    <div class="col-md-4" *ngFor="let batch of filteredBatches()">
+      <div class="card h-100 shadow-sm"   >
+
+        <img [src]="batch.batch_img_link" class="card-img-top" alt="Batch Image">
+
+        <div class="card-body">
+          <h6 class="card-title">{{ batch.batchName }}</h6>
+          <span class="badge bg-warning text-dark" *ngIf="batch.isNew">New</span>
+          <p class="text-muted small">{{ batch.language }}</p>
+
+          <div  class="text-danger small my-2">
+            <i class="bi bi-exclamation-circle"></i> Batch {{batch.status}}
+          </div>
+
+          <button *ngIf="!(batch.status == 'Expired')" class="btn btn-primary w-100" (click)="openBatch(batch.batchCode)" >
+            Let's Study
+          </button>
+          <button *ngIf="batch.status ==='Expired'" class="btn btn-outline-primary w-100">
+            View Similar Batches
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

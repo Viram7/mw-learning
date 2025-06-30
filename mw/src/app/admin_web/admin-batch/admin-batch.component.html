@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <div class="ms-auto text-white">
+    <i class="bi bi-person-circle"></i>
+    <h4>Batch Management</h4>
+  </div>
+</nav>
+
+
+
+<div class="col-md-12 p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4>Batch Management</h4>
+    <div class="d-flex gap-1">
+      <button class="btn btn-primary" [routerLink]="['../add_coupons']" routerLinkActive="router-link-active"> + Add Coupon </button>
+
+      <button class="btn btn-primary" [routerLink]="['../admin_input_batch']" routerLinkActive="router-link-active">+
+        Add Batch</button>
+    </div>
+  </div>
+
+  <!-- Filter/Search -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <small> Search by batch name, course, or teacher </small>
+      <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search by batch name, course, or teacher">
+    </div>
+    <div class="col-md-3">
+      <small> Filter by batchCode </small>
+      <select class="form-select" placeholder="Filter by batchCode" [(ngModel)]="term" >
+        <option disabled selected> Filter by batchCode </option>
+        <option *ngFor="let item of data.batches" > {{ item.batchCode }} </option>
+      </select>
+    </div>
+ 
+  </div>
+
+  <!-- Batch Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Batch Name</th>
+          <th>Batch Code</th>
+          <th>Teacher</th>
+          <th>Timing</th>
+          <th>No. of Students</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+    <ng-container *ngFor="let batch of data.batches | searchFilter:term ; let i = index">
+          <tr>
+          <td> {{i+1}} </td>
+          <td> {{ batch.batchName }} </td>
+          <td> {{batch.batchCode}} </td>
+          <td> {{batch.teacher}} </td>
+          <td> {{batch.startDate | date:'longDate'}} - {{batch.endDate | date:'longDate'}} </td>
+
+
+          <td> {{ batch.studentCount }} </td>
+          <td>
+            <div class="d-flex gap-1 ">
+              <button class="btn btn-primary " [routerLink]="['../upload_batch_video']"
+                routerLinkActive="router-link-active"> + Add Video </button>
+              <button class="btn btn-primary" [routerLink]="['../add_batch_announcement']"
+                routerLinkActive="router-link-active"> + Add Announcement </button>
+
+              <button class="btn btn-sm btn-success" (click)="openEditDialog(batch)">Edit</button>
+              <button (click)="deleteBatch(batch._id)" class="btn btn-sm btn-danger">Delete</button>
+            </div>
+          </td>
+        </tr>
+    </ng-container>
+
+      </tbody>
+    </table>
+  </div>
+</div>

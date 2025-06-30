@@ -1,0 +1,43 @@
+<div class="register-container">
+  <h2>Register Admin</h2>
+  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Image Link</mat-label>
+      <input matInput formControlName="img_link" placeholder="https://imgur.com/..." />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Admin Name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="admin@example.com" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" placeholder="9876543210" />
+    </mat-form-field>
+
+       <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="********" type="password" />
+    </mat-form-field>
+
+      <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput formControlName="confirmPassword" placeholder="********" type="password" />
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">
+      Register
+    </button>
+
+    <div *ngIf="responseMessage" [style.color]="isError ? 'red' : 'green'" class="message">
+      {{ responseMessage }}
+    </div>
+  </form>
+</div>

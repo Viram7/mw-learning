@@ -1,0 +1,64 @@
+
+
+<div class="container mt-5">
+  <button class="btn btn-outline-dark small" (click)="fatch_api()" >refresh</button>
+<div>
+  <div class="container py-4">
+    <h5>Quick Access</h5>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-4" *ngFor="let item of quickAccessItems">
+        <div class="card h-100 shadow-sm" (click)="navigate(item.link)" style="cursor: pointer;">
+          <div class="card-body ">
+            <img [src]="item.icon" alt="{{ item.title }}" width="50" height="50">
+            <div  class="py-2" >
+              <h6 class="card-title mb-1">{{ item.title }}</h6>
+              <p class="card-text text-muted small">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <h3>recmended batch</h3>
+  <div class="row">
+
+    <div class="col-md-4" *ngFor="let course of courses | recommendationFilter :current_student_buyed_batch : current_student_exams ">
+      <div class="card shadow rounded-4 m-2">
+        <div class="position-relative">
+          <img [src]="course.image" class="card-img-top rounded-top-4 p-3" alt="Course Image">
+          <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">New</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text"> {{ course.subtitle | slice:0:100 }}...</p>
+
+          <ul class="list-unstyled mb-3">
+            <li><i class="bi bi-calendar-event"></i> Starts on {{ course.startDate }}</li>
+            <li><i class="bi bi-calendar-x"></i> Ends on {{ course.endDate }}</li>
+            <!-- <li><i class="bi bi-building "></i> {{ course.info }}</li> -->
+          </ul>
+
+          <a href="#" class="text-primary fw-semibold d-block mb-3">Free Counselling</a>
+          <P>{{course.batchCode}} </P>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary w-50" [routerLink]="['../batch_details_sub']" [queryParams]="{batchCode:course.batchCode}" routerLinkActive="router-link-active" (click)="sendCourceCode(course.batchCode)" >Explore</button>
+            <button class="btn btn-primary w-50" [routerLink]="['../order_summery']" [queryParams]="{batchCode:course.batchCode}" routerLinkActive="router-link-active">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a [routerLink]="['../stu_batch']"   routerLinkActive="router-link-active" > <button class="btn btn-outline-secondary"  >View All</button></a>
+  </div>
+
+
+</div>

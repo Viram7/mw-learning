@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <div class="ms-auto text-white">
+    <i class="bi bi-person-circle"></i> <h4>Student Management </h4>
+  </div>
+</nav>
+
+
+    <div class="col-md-12 p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Student Management</h4>
+        <!-- <button class="btn btn-primary">+ Add Student</button> -->
+      </div>
+
+      <!-- Search & Filter -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <small>  Search by name,email, number or ID   </small>
+          <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search by name,email, number or ID ">
+        </div>
+        <div class="col-md-4">
+            <small> Filter by Batch </small>
+
+          <select class="form-select" [(ngModel)]="term2" >
+            <option selected value="" > None </option>
+
+            <option *ngFor="let item of batchCode" > {{  item }} </option>
+       ]
+          </select>
+        </div>
+      </div>
+
+      <!-- Student Table -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Batch</th>
+              <th>Exam</th>
+              <th>Phone</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let student of students | searchFilter:term  | filterStudentByBatch : term2 ; let i = index">
+              <tr  >
+              <td>{{i + 1}}</td>
+              <td><img class="rounded-circle" [src]="student.img_link" height="30px"> {{student.name}} </td>
+              <td> {{student.batch_code}}  </td>
+              <td> {{student.exam}} </td>
+              <td> {{student.phoneNumber}} </td>
+              <td> {{student.gender}} </td>
+              <td> {{student.email}} </td>
+              <td>
+                <button  [routerLink]="['../student_details_info']" [queryParams]="{ id: student._id }"  routerLinkActive="router-link-active" class="btn btn-sm btn-success"> details </button>
+                <!-- <button class="btn btn-sm btn-danger">Delete</button> -->
+              </td>
+            </tr>
+          </ng-container>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>

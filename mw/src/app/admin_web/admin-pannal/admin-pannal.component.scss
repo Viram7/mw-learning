@@ -1,0 +1,10 @@
+.sidebar-nav a.mat-list-item.active-tab {
+  background-color: #1976d2; /* Material blue */
+  color: white !important;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.sidebar-nav a.mat-list-item:hover {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
