@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class AadBatchAnnouncementComponent {
   http = inject(HttpClient);
 
   batchAnnouncementForm!: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,@Inject(PLATFORM_ID) private platformId: Object) {
     this.batchAnnouncementForm = this.fb.group({
       batchCode:['',Validators.required],
       announcement_title: ['', Validators.required],
@@ -26,6 +26,9 @@ export class AadBatchAnnouncementComponent {
   }
 
   onSubmit() {
+      if (isPlatformBrowser(this.platformId)) {
+
+
     if (this.batchAnnouncementForm.valid) {
 
       this.http.post<any>(this.aad_batch_announcement_api, this.batchAnnouncementForm.value).subscribe(
@@ -45,4 +48,5 @@ export class AadBatchAnnouncementComponent {
       console.log('Form is invalid');
     }
   }
+}
 }

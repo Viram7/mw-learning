@@ -1,7 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditbatchComponent } from '../editbatch/editbatch.component';
@@ -74,9 +74,16 @@ export class AdminBatchComponent {
   }
 
 
+constructor(@Inject(PLATFORM_ID) private platformId: Object)
+{
 
+}
 
   ngOnInit(): void {
+
+ if (isPlatformBrowser(this.platformId)) {
+
+
 
     this.http.get('https://mw-learning.up.railway.app/api/admin/allTeacher').subscribe((data: any) => {
             console.log(data);
@@ -106,7 +113,7 @@ export class AdminBatchComponent {
 
 
 
-
+  }
   }
 
 
