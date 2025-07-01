@@ -39,7 +39,10 @@ import { AdminRegisterComponent } from './admin_web/admin-register/admin-registe
 
 export const routes: Routes = [
 
-  {path:'',redirectTo:'home_page',pathMatch:'full'},
+  // {path:'',redirectTo:'home_page',pathMatch:'full'},
+
+  {path:'',component:HomePageComponent},
+
   {path:'home_page',component:HomePageComponent},
   {path:'cource_details',component:CourceDetailsComponent},
   {path:'batch_details',component:BatchDetailsComponent},
