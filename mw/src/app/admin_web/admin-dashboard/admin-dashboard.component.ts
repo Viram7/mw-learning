@@ -15,6 +15,7 @@ import {
 } from 'ng-apexcharts';
 import { from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 export type PieChartOptions = {
   series: ApexNonAxisChartSeries;

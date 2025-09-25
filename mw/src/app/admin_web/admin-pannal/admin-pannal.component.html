@@ -1,7 +1,10 @@
 <div  class="row m-0 admin-panel">
 
-  <div class="col-md-12 m-0 " style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
+  <div class="d-flex justify-content-between " style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
+    <div></div>
     <h2 class="text-center">Admin Panel</h2>
+    <a [routerLink]="['/admin_login_page']" routerLinkActive="router-link-active"><button class="btn btn-danger btn-sm ms-3">Logout</button></a>
+
   </div>
 
 <mat-nav-list class="mat-vertical-tab-list  " class="col-md-2 m-0">
@@ -14,11 +17,11 @@
   <a mat-list-item [routerLink]="['admin_chat_group']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Chat Group</a>
 
   <a mat-list-item [routerLink]="['admin_courses']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Courses</a>
-  <a mat-list-item [routerLink]="['admin_fees']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Fees</a>
+  <!-- <a mat-list-item [routerLink]="['admin_fees']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Fees</a>
   <a mat-list-item [routerLink]="['admin_attendance']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Attendance</a>
   <a mat-list-item [routerLink]="['admin_exams']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Exams</a>
   <a mat-list-item [routerLink]="['admin_study']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Study Material</a>
-  <a mat-list-item [routerLink]="['admin_settings']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Settings</a>
+  <a mat-list-item [routerLink]="['admin_settings']" routerLinkActive="active-tab" routerLinkActive="router-link-active">Settings</a> -->
 </div>
 
 </mat-nav-list>

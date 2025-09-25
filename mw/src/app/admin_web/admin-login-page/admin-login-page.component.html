@@ -30,11 +30,13 @@
       <button type="submit"  class="btn btn-primary w-100" [disabled]="!loginForm.valid">
         Login
       </button>
+      <a class="d-flex justify-content-center mt-3" [routerLink]="['/admin_register_page']" routerLinkActive="router-link-active" > admin register </a>
     </form>
 
-      <div *ngIf="process" class="spinner-border" role="status">
-  <span class="sr-only">Loading...</span>
 </div>
+      <div *ngIf="process" class="spinner-border z-3 position-absolute " role="status">
 
   </div>
+
+
 </div>
